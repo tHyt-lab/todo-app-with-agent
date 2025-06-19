@@ -1,0 +1,67 @@
+# Auto-labeling configuration
+# Documentation: https://github.com/actions/labeler
+
+# Features
+feature:
+  - 'src/components/**'
+  - 'src/hooks/**'
+  - 'src/utils/**'
+  - any: ['feat:', 'feature:']
+
+# Bug fixes
+bug:
+  - any: ['fix:', 'bug:', 'bugfix:']
+
+# Documentation
+documentation:
+  - 'README.md'
+  - 'docs/**'
+  - '*.md'
+  - any: ['docs:', 'doc:']
+
+# Dependencies
+dependencies:
+  - 'package.json'
+  - 'package-lock.json'
+  - 'npm-shrinkwrap.json'
+  - any: ['deps:', 'dependencies:']
+
+# Chore/Maintenance
+chore:
+  - '.github/**'
+  - 'tsconfig.json'
+  - 'vite.config.ts'
+  - 'biome.json'
+  - any: ['chore:', 'maintenance:']
+
+# Refactoring
+refactor:
+  - any: ['refactor:', 'refact:']
+
+# Performance
+performance:
+  - any: ['perf:', 'performance:']
+
+# Security
+security:
+  - any: ['security:', 'sec:']
+
+# Testing
+test:
+  - '**/*.test.{ts,tsx}'
+  - '**/*.spec.{ts,tsx}'
+  - 'src/test/**'
+  - any: ['test:', 'tests:']
+
+# Styling
+style:
+  - '**/*.css'
+  - '**/*.scss'
+  - any: ['style:', 'styles:']
+
+# Configuration
+config:
+  - '.github/**'
+  - '*.config.{js,ts}'
+  - '*.json'
+  - any: ['config:', 'configuration:']

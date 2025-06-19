@@ -88,6 +88,47 @@ You can also trigger a manual deployment by:
 3. Set Source to "GitHub Actions"
 4. The app will be available at `https://your-username.github.io/todo-app-with-agent/`
 
+## 🔖 Release Process
+
+This project uses automated release management with semantic versioning.
+
+### 📝 Creating a Release
+
+1. **Automatic Draft Creation**: Release drafts are automatically created when PRs are merged to `main`
+2. **Semantic Versioning**: Releases follow semantic versioning (MAJOR.MINOR.PATCH)
+3. **Label-based Versioning**: Version increments are determined by PR labels:
+   - `major` or `breaking`: Major version bump (1.0.0 → 2.0.0)
+   - `minor` or `feature`: Minor version bump (1.0.0 → 1.1.0)
+   - `patch`, `bug`, `bugfix`, `chore`: Patch version bump (1.0.0 → 1.0.1)
+
+### 🏷️ PR Labels
+
+Add appropriate labels to your PRs for proper categorization:
+
+- **🚀 Features**: `feature`, `enhancement`
+- **🐛 Bug Fixes**: `bug`, `bugfix`
+- **🧹 Maintenance**: `chore`, `dependencies`
+- **📚 Documentation**: `documentation`
+- **🔧 Refactoring**: `refactor`
+- **⚡ Performance**: `performance`
+- **🔒 Security**: `security`
+
+### 📖 Release Notes
+
+Release notes are automatically generated and include:
+- Categorized changelog based on PR labels
+- Links to related PRs and contributors
+- Installation and quick start instructions
+- Link to live demo
+
+### 🚀 Publishing a Release
+
+1. Go to the [Releases page](../../releases)
+2. Edit the automatically created draft
+3. Review the generated release notes
+4. Click "Publish release"
+5. The app will automatically deploy to GitHub Pages
+
 ## 📋 Scripts
 
 - `npm run dev` - Start development server
