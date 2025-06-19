@@ -3,65 +3,97 @@
 
 # Features
 feature:
-  - 'src/components/**'
-  - 'src/hooks/**'
-  - 'src/utils/**'
-  - any: ['feat:', 'feature:']
+  - changed-files:
+    - any-glob-to-any-file: 'src/components/**'
+  - changed-files:
+    - any-glob-to-any-file: 'src/hooks/**'
+  - changed-files:
+    - any-glob-to-any-file: 'src/utils/**'
+  - head-branch: ['feat/*', 'feature/*']
+  - title: ['feat:', 'feature:']
 
 # Bug fixes
 bug:
-  - any: ['fix:', 'bug:', 'bugfix:']
+  - head-branch: ['fix/*', 'bug/*', 'bugfix/*']
+  - title: ['fix:', 'bug:', 'bugfix:']
 
 # Documentation
 documentation:
-  - 'README.md'
-  - 'docs/**'
-  - '*.md'
-  - any: ['docs:', 'doc:']
+  - changed-files:
+    - any-glob-to-any-file: 'README.md'
+  - changed-files:
+    - any-glob-to-any-file: 'docs/**'
+  - changed-files:
+    - any-glob-to-any-file: '*.md'
+  - head-branch: ['docs/*', 'doc/*']
+  - title: ['docs:', 'doc:']
 
 # Dependencies
 dependencies:
-  - 'package.json'
-  - 'package-lock.json'
-  - 'npm-shrinkwrap.json'
-  - any: ['deps:', 'dependencies:']
+  - changed-files:
+    - any-glob-to-any-file: 'package.json'
+  - changed-files:
+    - any-glob-to-any-file: 'package-lock.json'
+  - changed-files:
+    - any-glob-to-any-file: 'npm-shrinkwrap.json'
+  - head-branch: ['deps/*', 'dependencies/*']
+  - title: ['deps:', 'dependencies:']
 
 # Chore/Maintenance
 chore:
-  - '.github/**'
-  - 'tsconfig.json'
-  - 'vite.config.ts'
-  - 'biome.json'
-  - any: ['chore:', 'maintenance:']
+  - changed-files:
+    - any-glob-to-any-file: '.github/**'
+  - changed-files:
+    - any-glob-to-any-file: 'tsconfig.json'
+  - changed-files:
+    - any-glob-to-any-file: 'vite.config.ts'
+  - changed-files:
+    - any-glob-to-any-file: 'biome.json'
+  - head-branch: ['chore/*', 'maintenance/*']
+  - title: ['chore:', 'maintenance:']
 
 # Refactoring
 refactor:
-  - any: ['refactor:', 'refact:']
+  - head-branch: ['refactor/*', 'refact/*']
+  - title: ['refactor:', 'refact:']
 
 # Performance
 performance:
-  - any: ['perf:', 'performance:']
+  - head-branch: ['perf/*', 'performance/*']
+  - title: ['perf:', 'performance:']
 
 # Security
 security:
-  - any: ['security:', 'sec:']
+  - head-branch: ['security/*', 'sec/*']
+  - title: ['security:', 'sec:']
 
 # Testing
 test:
-  - '**/*.test.{ts,tsx}'
-  - '**/*.spec.{ts,tsx}'
-  - 'src/test/**'
-  - any: ['test:', 'tests:']
+  - changed-files:
+    - any-glob-to-any-file: '**/*.test.{ts,tsx}'
+  - changed-files:
+    - any-glob-to-any-file: '**/*.spec.{ts,tsx}'
+  - changed-files:
+    - any-glob-to-any-file: 'src/test/**'
+  - head-branch: ['test/*', 'tests/*']
+  - title: ['test:', 'tests:']
 
 # Styling
 style:
-  - '**/*.css'
-  - '**/*.scss'
-  - any: ['style:', 'styles:']
+  - changed-files:
+    - any-glob-to-any-file: '**/*.css'
+  - changed-files:
+    - any-glob-to-any-file: '**/*.scss'
+  - head-branch: ['style/*', 'styles/*']
+  - title: ['style:', 'styles:']
 
 # Configuration
 config:
-  - '.github/**'
-  - '*.config.{js,ts}'
-  - '*.json'
-  - any: ['config:', 'configuration:']
+  - changed-files:
+    - any-glob-to-any-file: '.github/**'
+  - changed-files:
+    - any-glob-to-any-file: '*.config.{js,ts}'
+  - changed-files:
+    - any-glob-to-any-file: '*.json'
+  - head-branch: ['config/*', 'configuration/*']
+  - title: ['config:', 'configuration:']

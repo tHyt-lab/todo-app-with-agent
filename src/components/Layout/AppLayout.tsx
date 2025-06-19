@@ -25,6 +25,7 @@ import { motion } from "framer-motion";
 import { useAtom } from "jotai";
 import React, { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import i18n from "../../locales";
 import { languageAtom, themeAtom } from "../../store/atoms";
 
 interface AppLayoutProps {
@@ -55,7 +56,10 @@ export const AppLayout: React.FC<AppLayoutProps> = React.memo(
     }, [currentTheme, setTheme]);
 
     const handleLanguageToggle = useCallback(() => {
-      setLanguage(currentLanguage === "ja" ? "en" : "ja");
+      const newLanguage = currentLanguage === "ja" ? "en" : "ja";
+      setLanguage(newLanguage);
+      // i18nextの言語も更新
+      i18n.changeLanguage(newLanguage);
     }, [currentLanguage, setLanguage]);
 
     const menuItems = useMemo(
