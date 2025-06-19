@@ -1,20 +1,20 @@
-import React, { useCallback, useMemo } from "react";
+import { Clear as ClearIcon, Search as SearchIcon } from "@mui/icons-material";
 import {
   Box,
-  TextField,
+  Button,
   FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   IconButton,
   InputAdornment,
-  Button,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
 } from "@mui/material";
-import { Search as SearchIcon, Clear as ClearIcon } from "@mui/icons-material";
-import { useTranslation } from "react-i18next";
 import { useAtom } from "jotai";
+import React, { useCallback, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { taskFiltersAtom, taskSortAtom } from "../../store/atoms";
-import { TaskStatus, TaskPriority, TaskSort } from "../../types";
+import { TaskPriority, TaskSort, TaskStatus } from "../../types";
 import { debounce } from "../../utils/helpers";
 
 export const TaskFilters: React.FC = React.memo(() => {

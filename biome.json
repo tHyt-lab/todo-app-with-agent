@@ -1,12 +1,14 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
   "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
-  "files": { "ignoreUnknown": false },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": ["src/**/*.{ts,tsx}", "!src/routeTree.gen.ts"]
+  },
   "formatter": { "enabled": true, "indentStyle": "space", "indentWidth": 2 },
   "linter": {
     "enabled": true,
-    "rules": { "recommended": false },
-    "includes": ["**", "!dist"]
+    "rules": { "recommended": false }
   },
   "javascript": { "formatter": { "quoteStyle": "double" } },
   "overrides": [
@@ -268,16 +270,6 @@
             "useExhaustiveDependencies": "warn",
             "useHookAtTopLevel": "error"
           }
-        }
-      }
-    },
-    {
-      "includes": ["**/*.{test,spec}.{ts,tsx}", "**/__tests__/**/*.{ts,tsx}"],
-      "linter": {
-        "rules": {
-          "correctness": { "noUnusedVariables": "off" },
-          "style": { "noCommonJs": "off", "useConst": "off" },
-          "suspicious": { "noExplicitAny": "off" }
         }
       }
     }

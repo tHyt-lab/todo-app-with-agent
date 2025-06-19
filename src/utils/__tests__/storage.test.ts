@@ -1,13 +1,13 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import type { Task } from "../../types";
 import {
-  saveToStorage,
+  deserializeTasks,
   loadFromStorage,
   removeFromStorage,
-  serializeTask,
-  deserializeTasks,
   STORAGE_KEYS,
+  saveToStorage,
+  serializeTask,
 } from "../storage";
-import type { Task } from "../../types";
 
 // Mock localStorage
 const localStorageMock = {
@@ -44,9 +44,9 @@ describe("storage", () => {
     });
 
     it("should handle errors gracefully", () => {
-      const consoleSpy = vi
-        .spyOn(console, "error")
-        .mockImplementation(() => {});
+      const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {
+        // noop
+      });
       localStorageMock.setItem.mockImplementation(() => {
         throw new Error("Storage error");
       });
@@ -82,9 +82,9 @@ describe("storage", () => {
     });
 
     it("should handle JSON parse errors", () => {
-      const consoleSpy = vi
-        .spyOn(console, "error")
-        .mockImplementation(() => {});
+      const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {
+        // noop
+      });
       localStorageMock.getItem.mockReturnValue("invalid json");
       const defaultValue = { default: true };
 
@@ -104,9 +104,9 @@ describe("storage", () => {
     });
 
     it("should handle errors gracefully", () => {
-      const consoleSpy = vi
-        .spyOn(console, "error")
-        .mockImplementation(() => {});
+      const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {
+        // noop
+      });
       localStorageMock.removeItem.mockImplementation(() => {
         throw new Error("Remove error");
       });
