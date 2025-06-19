@@ -7,7 +7,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { ja } from "date-fns/locale";
-import { Provider, useAtom } from "jotai";
+import { useAtom } from "jotai";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { AppLayout } from "../components/Layout/AppLayout";
@@ -35,23 +35,21 @@ function RootComponent() {
   const muiTheme = createAppTheme(theme);
 
   return (
-    <Provider>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={muiTheme}>
-          <LocalizationProvider
-            dateAdapter={AdapterDateFns}
-            adapterLocale={language === "ja" ? ja : undefined}
-          >
-            <CssBaseline />
-            <AppLayout>
-              <Outlet />
-            </AppLayout>
-          </LocalizationProvider>
-        </ThemeProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={muiTheme}>
+        <LocalizationProvider
+          dateAdapter={AdapterDateFns}
+          adapterLocale={language === "ja" ? ja : undefined}
+        >
+          <CssBaseline />
+          <AppLayout>
+            <Outlet />
+          </AppLayout>
+        </LocalizationProvider>
+      </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
       <TanStackRouterDevtools />
-    </Provider>
+    </QueryClientProvider>
   );
 }
 
