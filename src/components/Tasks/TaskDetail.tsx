@@ -14,10 +14,10 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
+import { useNavigate, useParams } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useParams } from "react-router-dom";
 import { useTasks } from "../../hooks/useTasks";
 import {
   formatDateTime,
@@ -26,7 +26,7 @@ import {
 } from "../../utils/helpers";
 
 export const TaskDetail: React.FC = React.memo(() => {
-  const { taskId } = useParams<{ taskId: string }>();
+  const { taskId } = useParams({ from: "/tasks/$taskId" });
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { getTaskById, deleteTask, duplicateTask } = useTasks();
@@ -36,19 +36,19 @@ export const TaskDetail: React.FC = React.memo(() => {
   const handleDelete = useCallback(() => {
     if (task && window.confirm(t("task.confirmDelete"))) {
       deleteTask(task.id);
-      navigate("/tasks");
+      navigate({ to: "/tasks" });
     }
   }, [task, t, deleteTask, navigate]);
 
   const handleDuplicate = useCallback(() => {
     if (task) {
       duplicateTask(task.id);
-      navigate("/tasks");
+      navigate({ to: "/tasks" });
     }
   }, [task, duplicateTask, navigate]);
 
   const handleGoBack = useCallback(() => {
-    navigate("/tasks");
+    navigate({ to: "/tasks" });
   }, [navigate]);
 
   if (!task) {

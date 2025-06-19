@@ -7,10 +7,10 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
+import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import type { Task } from "../../types";
 import {
   formatDate,
@@ -57,7 +57,8 @@ export const TaskCard: React.FC<TaskCardProps> = React.memo(
               mb={2}
             >
               <Link
-                to={`/tasks/${task.id}`}
+                to="/tasks/$taskId"
+                params={{ taskId: task.id }}
                 style={{
                   textDecoration: "none",
                   color: "inherit",

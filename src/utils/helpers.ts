@@ -63,17 +63,17 @@ export const truncateText = (text: string, maxLength: number = 100): string => {
   return `${text.substring(0, maxLength)}...`;
 };
 
-export const debounce = <T extends (...args: unknown[]) => unknown>(
+export function debounce<T extends (...args: never[]) => void>(
   func: T,
   wait: number,
-): ((...args: Parameters<T>) => void) => {
+): T {
   let timeout: number | null = null;
 
-  return (...args: Parameters<T>) => {
+  return ((...args: Parameters<T>) => {
     if (timeout) clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait);
-  };
-};
+  }) as T;
+}
 
 export const formatTaskCount = (
   count: number,
