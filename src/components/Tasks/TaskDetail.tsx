@@ -10,13 +10,14 @@ import {
   Card,
   CardContent,
   Chip,
+  Dialog,
   Divider,
   IconButton,
   Typography,
 } from "@mui/material";
 import { useNavigate, useParams } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useTasks } from "../../hooks/useTasks";
 import {
@@ -24,12 +25,14 @@ import {
   getPriorityColor,
   getStatusColor,
 } from "../../utils/helpers";
+import { TaskForm } from "./TaskForm";
 
 export const TaskDetail: React.FC = React.memo(() => {
   const { taskId } = useParams({ from: "/tasks/$taskId" });
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { getTaskById, deleteTask, duplicateTask } = useTasks();
+  const [showEditDialog, setShowEditDialog] = useState(false);
 
   const task = taskId ? getTaskById(taskId) : null;
 
@@ -50,6 +53,14 @@ export const TaskDetail: React.FC = React.memo(() => {
   const handleGoBack = useCallback(() => {
     navigate({ to: "/tasks" });
   }, [navigate]);
+
+  const handleEdit = useCallback(() => {
+    setShowEditDialog(true);
+  }, []);
+
+  const handleEditDialogClose = useCallback(() => {
+    setShowEditDialog(false);
+  }, []);
 
   if (!task) {
     return (
@@ -79,9 +90,7 @@ export const TaskDetail: React.FC = React.memo(() => {
           <Button
             startIcon={<EditIcon />}
             variant="outlined"
-            onClick={() => {
-              // TODO: Open edit dialog
-            }}
+            onClick={handleEdit}
           >
             {t("task.editTask")}
           </Button>
@@ -206,6 +215,19 @@ export const TaskDetail: React.FC = React.memo(() => {
             </Box>
           </CardContent>
         </Card>
+
+        <Dialog
+          open={showEditDialog}
+          onClose={handleEditDialogClose}
+          maxWidth="sm"
+          fullWidth
+        >
+          <TaskForm
+            task={task}
+            onClose={handleEditDialogClose}
+            onSuccess={handleEditDialogClose}
+          />
+        </Dialog>
       </Box>
     </motion.div>
   );
