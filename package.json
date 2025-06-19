@@ -3,6 +3,20 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "description": "A modern Todo application built with React + TypeScript + Vite",
+  "keywords": ["todo", "react", "typescript", "vite", "material-ui", "tanstack-router"],
+  "homepage": "https://thyt-lab.github.io/todo-app-with-agent/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thyt-lab/todo-app-with-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thyt-lab/todo-app-with-agent/issues"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
