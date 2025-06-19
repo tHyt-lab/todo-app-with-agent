@@ -2,8 +2,11 @@
 
 [![CI](https://github.com/YOUR_USERNAME/todo-app/workflows/CI/badge.svg)](https://github.com/YOUR_USERNAME/todo-app/actions)
 [![PR Checks](https://github.com/YOUR_USERNAME/todo-app/workflows/PR%20Checks/badge.svg)](https://github.com/YOUR_USERNAME/todo-app/actions)
+[![Deploy](https://github.com/YOUR_USERNAME/todo-app/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)](https://github.com/YOUR_USERNAME/todo-app/actions)
 
 A modern Todo application built with React + TypeScript + Vite.
+
+🌐 **Live Demo**: [https://your-username.github.io/todo-app/](https://your-username.github.io/todo-app/)
 
 ## 🚀 Features
 
@@ -12,8 +15,9 @@ A modern Todo application built with React + TypeScript + Vite.
 - 🎨 Material-UI for beautiful components
 - 🧪 Comprehensive testing with Vitest
 - 📊 Test coverage reporting
-- 🔍 ESLint + Biome for code quality
+- 🔍 Biome for code quality and formatting
 - 🔄 GitHub Actions CI/CD
+- 🌐 Automatic deployment to GitHub Pages
 
 ## 📦 Installation
 
@@ -64,6 +68,25 @@ npm run type-check
 ```bash
 npm run build
 ```
+
+## 🚀 Deployment
+
+This project automatically deploys to GitHub Pages when a new release is published.
+
+### Manual Deployment
+
+You can also trigger a manual deployment by:
+
+1. Go to Actions tab in your GitHub repository
+2. Select "Deploy to GitHub Pages" workflow
+3. Click "Run workflow"
+
+### Setup GitHub Pages
+
+1. Go to your repository Settings
+2. Navigate to Pages section
+3. Set Source to "GitHub Actions"
+4. The app will be available at `https://your-username.github.io/todo-app/`
 
 ## 📋 Scripts
 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Todo App</title>
+    <script>
+      // Store the current path in sessionStorage and redirect to index.html
+      // This enables client-side routing for GitHub Pages SPAs
+      sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
+      location.replace(location.origin + '/todo-app/');
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
