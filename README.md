@@ -1,12 +1,12 @@
 # Todo App
 
-[![CI](https://github.com/YOUR_USERNAME/todo-app/workflows/CI/badge.svg)](https://github.com/YOUR_USERNAME/todo-app/actions)
-[![PR Checks](https://github.com/YOUR_USERNAME/todo-app/workflows/PR%20Checks/badge.svg)](https://github.com/YOUR_USERNAME/todo-app/actions)
-[![Deploy](https://github.com/YOUR_USERNAME/todo-app/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)](https://github.com/YOUR_USERNAME/todo-app/actions)
+[![CI](https://github.com/thyt-lab/todo-app-with-agent/workflows/CI/badge.svg)](https://github.com/thyt-lab/todo-app-with-agent/actions)
+[![PR Checks](https://github.com/thyt-lab/todo-app-with-agent/workflows/PR%20Checks/badge.svg)](https://github.com/thyt-lab/todo-app-with-agent/actions)
+[![Deploy](https://github.com/thyt-lab/todo-app-with-agent/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)](https://github.com/thyt-lab/todo-app-with-agent/actions)
 
 A modern Todo application built with React + TypeScript + Vite.
 
-🌐 **Live Demo**: [https://your-username.github.io/todo-app/](https://your-username.github.io/todo-app/)
+🌐 **Live Demo**: [https://thyt-lab.github.io/todo-app-with-agent/](https://thyt-lab.github.io/todo-app-with-agent/)
 
 ## 🚀 Features
 
@@ -86,7 +86,7 @@ You can also trigger a manual deployment by:
 1. Go to your repository Settings
 2. Navigate to Pages section
 3. Set Source to "GitHub Actions"
-4. The app will be available at `https://your-username.github.io/todo-app/`
+4. The app will be available at `https://your-username.github.io/todo-app-with-agent/`
 
 ## 📋 Scripts
 
