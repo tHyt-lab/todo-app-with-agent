@@ -1,0 +1,95 @@
+{
+  "app": {
+    "title": "TODO App",
+    "description": "Efficient task management tool"
+  },
+  "navigation": {
+    "tasks": "Tasks",
+    "dashboard": "Dashboard",
+    "settings": "Settings"
+  },
+  "task": {
+    "title": "Title",
+    "description": "Description",
+    "status": "Status",
+    "priority": "Priority",
+    "dueDate": "Due Date",
+    "tags": "Tags",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "noTasks": "No tasks found",
+    "createTask": "Create New Task",
+    "editTask": "Edit Task",
+    "deleteTask": "Delete Task",
+    "confirmDelete": "Are you sure you want to delete this task?",
+    "duplicateTask": "Duplicate Task",
+    "addTag": "Add tag",
+    "notFound": "Task not found",
+    "createFirstTask": "Create your first task"
+  },
+  "status": {
+    "pending": "Pending",
+    "in_progress": "In Progress",
+    "completed": "Completed"
+  },
+  "priority": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High"
+  },
+  "form": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "required": "This field is required",
+    "titleRequired": "Title is required",
+    "submit": "Submit",
+    "reset": "Reset"
+  },
+  "search": {
+    "placeholder": "Search tasks...",
+    "filter": "Filter",
+    "sort": "Sort",
+    "clear": "Clear"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "japanese": "日本語",
+    "english": "English",
+    "switch": "Switch language"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "total": "Total",
+    "active": "Active",
+    "finished": "Finished",
+    "all": "All",
+    "goBack": "Go Back"
+  },
+  "sort": {
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "titleAsc": "Title (A-Z)",
+    "titleDesc": "Title (Z-A)",
+    "priorityHigh": "Priority (High)",
+    "priorityLow": "Priority (Low)",
+    "dueDateSoon": "Due Date (Soon)"
+  },
+  "dashboard": {
+    "welcome": "Welcome to TODO App",
+    "welcomeDescription": "Create your first task to get started",
+    "progress": "Progress",
+    "progressDescription": "{{completed}} of {{total}} tasks completed",
+    "alerts": "Alerts",
+    "overdueTasks": "{{count}} overdue tasks",
+    "tasksDueToday": "{{count}} tasks due today"
+  }
+}

@@ -1,0 +1,35 @@
+version: 2
+updates:
+  # npm パッケージの更新を管理
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "hayato"
+    assignees:
+      - "hayato"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  # GitHub Actionsの更新を管理
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "hayato"
+    assignees:
+      - "hayato"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
