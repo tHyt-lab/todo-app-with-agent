@@ -13,11 +13,26 @@ const resources = {
   },
 };
 
+// localStorageから言語設定を取得
+const getStoredLanguage = (): string => {
+  try {
+    const storedSettings = localStorage.getItem("todo-app-settings");
+    if (storedSettings) {
+      const settings = JSON.parse(storedSettings);
+      return settings.language || "ja";
+    }
+  } catch (error) {
+    console.warn("Failed to read language setting from localStorage:", error);
+  }
+  return "ja";
+};
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
+    lng: getStoredLanguage(), // 初期言語を設定
     fallbackLng: "ja",
     debug: import.meta.env.DEV,
     interpolation: {
@@ -25,8 +40,8 @@ i18n
     },
     detection: {
       order: ["localStorage", "navigator"],
-      lookupLocalStorage: "todo-app-language",
-      caches: ["localStorage"],
+      lookupLocalStorage: "todo-app-settings",
+      caches: [],
     },
   });
 
