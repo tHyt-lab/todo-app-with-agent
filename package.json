@@ -1,10 +1,17 @@
 {
   "name": "todo-app",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.2",
   "type": "module",
   "description": "A modern Todo application built with React + TypeScript + Vite",
-  "keywords": ["todo", "react", "typescript", "vite", "material-ui", "tanstack-router"],
+  "keywords": [
+    "todo",
+    "react",
+    "typescript",
+    "vite",
+    "material-ui",
+    "tanstack-router"
+  ],
   "homepage": "https://thyt-lab.github.io/todo-app-with-agent/",
   "repository": {
     "type": "git",
