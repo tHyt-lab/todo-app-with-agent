@@ -3,6 +3,10 @@
 import { tanstackRouter } from "@tanstack/router-vite-plugin";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { readFileSync } from "fs";
+
+// package.jsonからバージョンを読み取り
+const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
 
 // GitHub Pagesベースパス設定（保守性のため定数化）
 const GITHUB_PAGES_BASE_PATH = '/todo-app-with-agent/';
@@ -12,6 +16,9 @@ export default defineConfig(({ command }) => {
   return {
     base: command === 'build' ? GITHUB_PAGES_BASE_PATH : '/',
     plugins: [react(), tanstackRouter()],
+    define: {
+      __APP_VERSION__: JSON.stringify(packageJson.version),
+    },
     resolve: {
       alias: {
         "@": "/src",
