@@ -146,6 +146,18 @@ export const AppLayout: React.FC<AppLayoutProps> = React.memo(
               {t("app.title")}
             </Typography>
 
+            <Typography
+              variant="body2"
+              sx={{
+                mr: 2,
+                opacity: 0.8,
+                fontSize: "0.75rem",
+                display: { xs: "none", sm: "block" },
+              }}
+            >
+              v{__APP_VERSION__}
+            </Typography>
+
             <IconButton
               color="inherit"
               onClick={handleLanguageToggle}
