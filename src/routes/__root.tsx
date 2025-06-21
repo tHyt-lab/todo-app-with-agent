@@ -10,9 +10,9 @@ import { ja } from "date-fns/locale";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { AppLayout } from "../components/Layout/AppLayout";
-import { languageAtom, themeAtom } from "../store/atoms";
-import { createAppTheme } from "../utils/theme";
+import { AppLayout } from "@/features/layout/components/AppLayout";
+import { languageAtom, themeAtom } from "@/features/settings/store/atoms";
+import { createAppTheme } from "@/features/settings/utils/theme";
 
 const queryClient = new QueryClient({
   defaultOptions: {

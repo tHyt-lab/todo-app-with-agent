@@ -3,11 +3,17 @@
 import { tanstackRouter } from "@tanstack/router-vite-plugin";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import path from "path";
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/todo-app-with-agent/' : '/',
+export default defineConfig({
+  base: process.env.GITHUB_PAGES ? '/todo-app-with-agent/' : '/',
   plugins: [react(), tanstackRouter()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   test: {
     globals: true,
     environment: "jsdom",
@@ -27,4 +33,4 @@ export default defineConfig(({ command }) => ({
       ],
     },
   },
-}));
+});
