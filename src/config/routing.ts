@@ -8,18 +8,18 @@
 export const getBasePath = (): string => {
   // 本番ビルド時はGitHub Pagesのベースパスを使用
   if (import.meta.env.PROD) {
-    return '/todo-app-with-agent/';
+    return "/todo-app-with-agent/";
   }
-  
+
   // 開発環境ではルートパスを使用
-  return '/';
+  return "/";
 };
 
 /**
  * GitHub Pages用のベースパス
  * 設定の一元管理のため定数として定義
  */
-export const GITHUB_PAGES_BASE_PATH = '/todo-app-with-agent/';
+export const GITHUB_PAGES_BASE_PATH = "/todo-app-with-agent/";
 
 /**
  * ベースパスを考慮したパスを生成
@@ -28,11 +28,11 @@ export const GITHUB_PAGES_BASE_PATH = '/todo-app-with-agent/';
  */
 export const createFullPath = (path: string): string => {
   const basePath = getBasePath();
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
   const fullPath = `${basePath}${cleanPath}`;
-  
+
   // 重複するスラッシュを除去
-  return fullPath.replace(/\/+/g, '/');
+  return fullPath.replace(/\/+/g, "/");
 };
 
 /**
@@ -40,13 +40,13 @@ export const createFullPath = (path: string): string => {
  * sessionStorageに保存された元のパスを復元
  */
 export const handleGitHubPagesRedirect = (): void => {
-  if (typeof window === 'undefined') return;
-  
-  const redirect = sessionStorage.getItem('redirect');
+  if (typeof window === "undefined") return;
+
+  const redirect = sessionStorage.getItem("redirect");
   if (redirect) {
-    sessionStorage.removeItem('redirect');
+    sessionStorage.removeItem("redirect");
     // TanStack Routerがベースパスを自動で処理するため、
     // 相対パスをそのまま使用
-    history.replaceState(null, '', redirect);
+    history.replaceState(null, "", redirect);
   }
 };

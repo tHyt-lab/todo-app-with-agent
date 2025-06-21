@@ -2,8 +2,8 @@ import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { Provider } from "jotai";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { routeTree } from "./routeTree.gen";
 import { getBasePath, handleGitHubPagesRedirect } from "./config/routing";
+import { routeTree } from "./routeTree.gen";
 import "./index.css";
 import "./locales";
 
@@ -11,7 +11,7 @@ import "./locales";
 handleGitHubPagesRedirect();
 
 // Create a new router instance with base path support
-const router = createRouter({ 
+const router = createRouter({
   routeTree,
   basepath: getBasePath(),
 });
