@@ -31,6 +31,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### CI Pipeline
 - `npm run ci` - Run complete CI pipeline (check + type-check + test:run + build)
 
+### Git Hooks
+- **husky** - Pre-commit hooks for automated quality checks
+- **lint-staged** - Runs CI pipeline on TypeScript files before commit
+- Pre-commit automatically runs `npm run ci` when TypeScript files are changed
+
 ## Architecture Overview
 
 This is a modern React TypeScript todo application built with:
@@ -67,12 +72,14 @@ This is a modern React TypeScript todo application built with:
 - **Provider hierarchy**: QueryClient > ThemeProvider > LocalizationProvider > AppLayout
 
 ### Component Organization
-- **Feature-based structure** under `src/components/`
+- **Feature-based structure** under `src/features/`
 - **Tasks/** - Task management components (List, Form, Detail, Card, Filters)
-- **Layout/** - Application layout components  
+- **Layout/** - Application layout components with version display
 - **Dashboard/** - Dashboard-specific components
-- **Custom hooks** in `src/hooks/` for reusable logic (useTasks pattern)
-- **Utility functions** in `src/utils/` with comprehensive test coverage
+- **Settings/** - Theme and language management
+- **Shared/** - Reusable utilities and components
+- **Custom hooks** in feature-specific `hooks/` directories for reusable logic
+- **Utility functions** in `src/shared/utils/` with comprehensive test coverage
 
 ### Performance Optimization Patterns
 - **React.memo** extensively used for component memoization
@@ -109,6 +116,7 @@ This is a modern React TypeScript todo application built with:
 
 ### Build Configuration
 - **Base path** dynamically set for GitHub Pages deployment (`/todo-app-with-agent/`)
+- **Version injection** - package.json version automatically injected as `__APP_VERSION__` global variable
 - **Test coverage** with v8 provider and multiple output formats
 - **Auto-generated route tree** excluded from linting
 
@@ -120,12 +128,16 @@ This is a modern React TypeScript todo application built with:
 - **Live Demo**: https://thyt-lab.github.io/todo-app-with-agent/
 - **GitHub Pages** deployment via GitHub Actions on release
 - **Base path** configured for `/todo-app-with-agent/` in production builds
+- **Version display** - Application version automatically displayed in header
+- **Automated workflow** - Release triggers: version update → build → deploy sequence
 
 ## Development Workflow
 1. Use `npm run dev` to start development
 2. Run `npm run check:fix` to fix code quality issues
 3. Use `npm run test` for testing during development
 4. Run `npm run ci` before committing to ensure all checks pass
+5. **Automated pre-commit checks** - husky automatically runs CI on TypeScript file changes
+6. **Version management** - Release creation automatically updates version and deploys
 
 ## Key Architectural Patterns
 
@@ -180,3 +192,50 @@ export const TaskCard: React.FC<TaskCardProps> = React.memo(
   }
 );
 ```
+
+### Version Display Pattern
+```typescript
+// vite.config.ts - Version injection
+import { readFileSync } from "fs";
+const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
+
+export default defineConfig({
+  define: {
+    __APP_VERSION__: JSON.stringify(packageJson.version),
+  },
+});
+
+// Component usage
+<Typography variant="body2">
+  v{__APP_VERSION__}
+</Typography>
+```
+
+### GitHub Actions Workflow Pattern
+```yaml
+# deploy.yml - Integrated version update and deployment
+jobs:
+  build:
+    steps:
+      - name: Extract version from tag
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+        if: github.event_name == 'release'
+      
+      - name: Update package.json version
+        run: |
+          npm version ${{ steps.version.outputs.version }} --no-git-tag-version
+          git add package.json && git commit -m "chore: update version"
+          git push origin HEAD:main
+        if: github.event_name == 'release'
+      
+      - name: Build project
+        run: npm run build # Uses updated version
+```
+
+## Pre-commit Quality Assurance
+- **Automatic checks** run on every commit affecting TypeScript files
+- **CI pipeline** ensures code quality, type safety, tests, and successful build
+- **Prevents broken commits** from entering the repository
+- **Consistent code style** enforced through Biome formatting
