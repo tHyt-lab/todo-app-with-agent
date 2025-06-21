@@ -4,12 +4,25 @@
     <meta charset="utf-8">
     <title>Todo App</title>
     <script>
-      // Store the current path in sessionStorage and redirect to index.html
-      // This enables client-side routing for GitHub Pages SPAs
-      sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
-      location.replace(location.origin + '/todo-app-with-agent/');
+      // GitHub Pages SPA routing support
+      // Store the current path and redirect to index.html for client-side routing
+      
+      const basePath = '/todo-app-with-agent/';
+      const currentPath = location.pathname + location.search + location.hash;
+      
+      // パスからベースパスを除去してからstoreする
+      const relativePath = currentPath.startsWith(basePath) 
+        ? currentPath.slice(basePath.length - 1) 
+        : currentPath;
+      
+      // 相対パスをsessionStorageに保存
+      sessionStorage.setItem('redirect', relativePath);
+      
+      // ベースパスのindex.htmlにリダイレクト
+      location.replace(location.origin + basePath);
     </script>
   </head>
   <body>
+    <p>Redirecting to Todo App...</p>
   </body>
 </html>

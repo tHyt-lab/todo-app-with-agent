@@ -4,9 +4,13 @@ import { tanstackRouter } from "@tanstack/router-vite-plugin";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
+// GitHub Pagesベースパス設定（保守性のため定数化）
+const GITHUB_PAGES_BASE_PATH = '/todo-app-with-agent/';
+
 // https://vite.dev/config/
-export default defineConfig({
-    base: process.env.GITHUB_PAGES ? '/todo-app-with-agent/' : '/',
+export default defineConfig(({ command }) => {
+  return {
+    base: command === 'build' ? GITHUB_PAGES_BASE_PATH : '/',
     plugins: [react(), tanstackRouter()],
     resolve: {
       alias: {
@@ -32,5 +36,5 @@ export default defineConfig({
         ],
       },
     },
-  }
-);
+  };
+});
