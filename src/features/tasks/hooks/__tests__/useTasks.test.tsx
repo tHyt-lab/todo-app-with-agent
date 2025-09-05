@@ -26,18 +26,6 @@ const createWrapper = () => {
   );
 };
 
-const _createTestTask = (overrides: Partial<Task> = {}): Task => ({
-  id: "test-id",
-  title: "Test Task",
-  description: "Test Description",
-  status: "pending",
-  priority: "medium",
-  createdAt: new Date("2023-01-01"),
-  updatedAt: new Date("2023-01-01"),
-  tags: [],
-  ...overrides,
-});
-
 const createNewTask = (overrides: Partial<CreateTask> = {}): CreateTask => ({
   title: "New Task",
   description: "New Description",
