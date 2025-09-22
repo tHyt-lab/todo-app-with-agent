@@ -85,7 +85,7 @@
     "lint-staged": "^16.1.2",
     "playwright": "^1.53.1",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5",
+    "vite": "^7.1.6",
     "vitest": "^3.2.4"
   },
   "lint-staged": {
